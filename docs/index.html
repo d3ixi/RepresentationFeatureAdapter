@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/figures.css">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./static/images/favicon-32.png">
   <link rel="alternate icon" href="./static/images/favicon.ico">
@@ -104,6 +105,39 @@
   </div>
 </section>
 
+<!-- FIG:PIPE -->
+<section class="section fig-section" id="how-it-works">
+  <div class="container is-max-desktop">
+    <h2 class="fig-title">How it works</h2>
+    <p class="fig-sub">Only the Representation Feature Adapter (RFA) is trained. The DINO encoder and the Sana decoder stay frozen.</p>
+    <div class="pipe-scroll"><div class="pipe">
+      <div class="node" style="--c:1"><div class="tile-box"><img class="tile zoom" src="./static/images/fig/pipe_input.jpg" alt="Input: a horse on grass." loading="lazy"></div></div>
+      <div class="node" style="--c:3"><svg class="block" viewBox="0 0 62 100" role="img" aria-label="DINO"><polygon points="2,2 60,22 60,78 2,98" fill="#e8ecf2" stroke="#b8c2d0" stroke-width="1.6" stroke-linejoin="round"/><text x="31" y="54" text-anchor="middle" font-size="12" fill="#1f2937">DINO</text></svg></div>
+      <div class="node map" style="--c:5"><div class="tile-box"><img class="tile zoom" src="./static/images/fig/pipe_fmap.jpg" alt="The DINO feature map of the horse, shown as colours." loading="lazy"></div></div>
+      <div class="node" style="--c:7"><div class="rfa-box">RFA</div></div>
+      <div class="node map" style="--c:9"><div class="tile-box"><img class="tile zoom" src="./static/images/fig/pipe_amap.jpg" alt="The feature map after the adapter: the same scene." loading="lazy"></div></div>
+      <div class="node" style="--c:11"><svg class="block" viewBox="0 0 62 100" role="img" aria-label="Sana"><polygon points="2,22 60,2 60,98 2,78" fill="#e8ecf2" stroke="#b8c2d0" stroke-width="1.6" stroke-linejoin="round"/><text x="31" y="54" text-anchor="middle" font-size="12" fill="#1f2937">Sana</text></svg></div>
+      <div class="node" style="--c:13"><div class="tile-box"><img class="tile zoom" src="./static/images/fig/pipe_output.jpg" alt="Output: the same animal as a zebra." loading="lazy"></div></div>
+      <div class="arrw" style="--c:2"><svg class="arr" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="arrw" style="--c:4"><svg class="arr" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="arrw" style="--c:6"><svg class="arr hot" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="arrw" style="--c:8"><svg class="arr hot" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="arrw" style="--c:10"><svg class="arr" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="arrw" style="--c:12"><svg class="arr" viewBox="0 0 60 20" aria-hidden="true"><line x1="6" y1="10" x2="46" y2="10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M44 4 L56 10 L44 16 Z" fill="currentColor"/></svg></div>
+      <div class="cap" style="--c:1"><b>Input</b><span>horse</span></div>
+      <div class="cap" style="--c:3"><b>Encoder</b><span>frozen</span></div>
+      <div class="cap" style="--c:5"><b>Feature map</b><span>scene + a small residue</span></div>
+      <div class="cap hot" style="--c:7"><b>Adapter</b><span>RFA, trained</span></div>
+      <div class="cap" style="--c:9"><b>Adapted map</b><span>same scene, residue moved</span></div>
+      <div class="cap" style="--c:11"><b>Decoder</b><span>frozen</span></div>
+      <div class="cap hot" style="--c:13"><b>Output</b><span>zebra</span></div>
+      <div class="inset"><div class="tie"></div><div class="tile-box"><img class="tile zoom" src="./static/images/fig/pipe_change.jpg" alt="Where the adapter changes the feature map, drawn over the input: red where it acts, yellow where it acts most. The grass stays untouched." loading="lazy"></div></div>
+      <div class="inset-note"><b>where it acts</b><span>red = changed, yellow = changed most</span></div>
+    </div></div>
+  </div>
+</section>
+<!-- /FIG:PIPE -->
+
 <section class="section" style="padding-top: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -121,11 +155,34 @@
   </div>
 </section>
 
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-4">More coming soon.</h2>
+<!-- FIG:RESULTS -->
+<section class="section fig-section" id="results">
+  <div class="container is-max-desktop">
+    <div class="band">
+      <h3 class="fig-title">Remove the weather</h3>
+      <p class="fig-sub">top: real adverse input, bottom: RFA output</p>
+      <div class="cols">
+        <div class="col"><span class="chip">Fog</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_fog_in.jpg" alt="Input: a road in dense fog." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_fog_out.jpg" alt="RFA output: the same road, fog removed." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Snow</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_snow_in.jpg" alt="Input: a snowy street crossing." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_snow_out.jpg" alt="RFA output: the same crossing, snow removed." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Rain</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_rain_in.jpg" alt="Input: a wet road in rain." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_rain_out.jpg" alt="RFA output: the same road, dry." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Haze</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_haze_in.jpg" alt="Input: a hazy river with hidden mountains." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_haze_out.jpg" alt="RFA output: the river clear, mountains visible." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Night</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_night_in.jpg" alt="Input: a downtown street at night." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/rm_night_out.jpg" alt="RFA output: the same street by day." loading="lazy"><span class="tag">RFA</span></div></div>
+      </div>
+    </div>
+    <div class="band">
+      <h3 class="fig-title">Sim to real</h3>
+      <p class="fig-sub">top: game render, bottom: RFA output</p>
+      <div class="cols">
+        <div class="col"><span class="chip">Sim &rarr; Real</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_1_in.jpg" alt="Input: game render 1." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_1_out.jpg" alt="RFA output: game render 1 as a photograph." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Sim &rarr; Real</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_2_in.jpg" alt="Input: game render 2." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_2_out.jpg" alt="RFA output: game render 2 as a photograph." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Sim &rarr; Real</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_3_in.jpg" alt="Input: game render 3." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_3_out.jpg" alt="RFA output: game render 3 as a photograph." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Sim &rarr; Real</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_4_in.jpg" alt="Input: game render 4." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_4_out.jpg" alt="RFA output: game render 4 as a photograph." loading="lazy"><span class="tag">RFA</span></div></div>
+        <div class="col"><span class="chip">Sim &rarr; Real</span><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_5_in.jpg" alt="Input: game render 5." loading="lazy"></div><svg class="down" viewBox="0 0 20 26" aria-hidden="true"><line x1="10" y1="2" x2="10" y2="17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3.5 15 L10 24 L16.5 15 Z" fill="currentColor"/></svg><div class="tile-box"><img class="tile zoom" src="./static/images/fig/s2r_5_out.jpg" alt="RFA output: game render 5 as a photograph." loading="lazy"><span class="tag">RFA</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
+<!-- /FIG:RESULTS -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -187,5 +244,7 @@
     </div>
 </footer>
 
+<div id="lightbox" hidden><img alt=""><p></p></div>
+<script src="./static/js/zoom.js"></script>
 </body>
 </html>
